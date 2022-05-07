@@ -2,12 +2,14 @@ import React from 'react';
 import colorLogo from '../images/es_logo.png'
 
 
-const Nav = ({authToken, setShowModal, showModal, setIsSignUp}) => {
+const Nav = ({setShowModal, showModal, setIsSignUp}) => {
 
     const handleClick = () => {
         setShowModal(true)
         setIsSignUp(false)
     }
+
+    const authToken = true;
 
     return (
         <nav>
