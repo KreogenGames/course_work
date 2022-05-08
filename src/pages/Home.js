@@ -14,7 +14,7 @@ const Home = () => {
         setShowModal(true)
         setIsSignUp(true)
     }
-    //Закончил на 1:56:58
+
     return (
         <div className="overlay">
             <Nav
