@@ -2,14 +2,13 @@ import React from 'react';
 import colorLogo from '../images/es_logo.png'
 
 
-const Nav = ({setShowModal, showModal, setIsSignUp}) => {
+const Nav = ({authToken, setShowModal, showModal, setIsSignUp}) => {
 
     const handleClick = () => {
         setShowModal(true)
         setIsSignUp(false)
     }
 
-    const authToken = true;
 
     return (
         <nav>
@@ -17,11 +16,13 @@ const Nav = ({setShowModal, showModal, setIsSignUp}) => {
                 <img className="logo" src={colorLogo}/>
             </div>
 
-            {!authToken && <button
-                className="nav-button"
-                onClick={handleClick}
-                disabled={showModal}
-            >Log In</button>}
+            {!authToken && (
+                <button
+                    className="nav-button"
+                    onClick={handleClick}
+                    disabled={showModal}
+                >Log In</button>
+            )}
         </nav>
     );
 };
