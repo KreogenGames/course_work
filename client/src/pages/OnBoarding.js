@@ -29,9 +29,9 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('http://localhost:8000/user', { formData })
+            const response = await axios.put('http://localhost:8000/user', {formData})
             const success = response.status === 200
-            if( success ) navigate('/dashboard')
+            if (success) navigate('/dashboard')
         } catch (err) {
             console.log(err)
         }
@@ -45,17 +45,14 @@ const OnBoarding = () => {
 
         setFormData((prevState) => ({
             ...prevState,
-            [name] : value
+            [name]: value
         }))
     }
-
-    console.log(formData)
 
     return (
         <>
             <Nav
-                setShowModal={() => {
-                }}
+                setShowModal={() => {}}
                 showModal={false}
             />
             <div className="onboarding">

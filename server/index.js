@@ -5,8 +5,9 @@ const {v4: uuidv4} = require('uuid')
 const jwt = require('jsonwebtoken')
 const cors = require('cors')
 const bcrypt = require('bcrypt')
+require('dotenv').config()
 
-const uri = 'mongodb+srv://kreogen4:jgj0qgXz6GkqUo3D@cluster0.m2so1.mongodb.net/Cluster0?retryWrites=true&w=majority'
+const uri = process.env.URI
 
 const app = express()
 app.use(cors())
@@ -125,7 +126,6 @@ app.put('/addmatch', async (req, res) => {
 app.get('/users', async (req, res) => {
     const client = new MongoClient(uri)
     const userIds = JSON.parse(req.query.userIds)
-    console.log(userIds)
 
     try {
         await client.connect()
@@ -143,7 +143,6 @@ app.get('/users', async (req, res) => {
                 }
             ]
         const foundUsers = await users.aggregate(pipeline).toArray()
-        console.log(foundUsers)
         res.send(foundUsers)
 
     } finally {
@@ -160,10 +159,16 @@ app.get('/gendered-users', async (req, res) => {
         await client.connect()
         const database = client.db('app-data')
         const users = database.collection('users')
-        const query = {gender_identity: { $eq : gender}}
-        const foundUsers = await users.find(query).toArray()
+        if(gender === 'everyone') {
+            const query = {gender_identity: {$eq: ('man' && 'woman')}}
+            const foundUsers = await users.find(query).toArray()
+            res.send(foundUsers)
+        } else {
+            const query = {gender_identity: {$eq: gender}}
+            const foundUsers = await users.find(query).toArray()
+            res.send(foundUsers)
+        }
 
-        res.send(foundUsers)
     } finally {
         await client.close()
     }
@@ -200,6 +205,41 @@ app.put('/user', async (req, res) => {
     }
 })
 
+// Get Messages by from_userId and to_userId
+app.get('/messages', async (req, res) => {
+    const {userId, correspondingUserId} = req.query
+    const client = new MongoClient(uri)
 
+    try {
+        await client.connect()
+        const database = client.db('app-data')
+        const messages = database.collection('messages')
+
+        const query = {
+            from_userId: userId, to_userId: correspondingUserId
+        }
+        const foundMessages = await messages.find(query).toArray()
+        res.send(foundMessages)
+    } finally {
+        await client.close()
+    }
+})
+
+// Add a Message to our Database
+app.post('/message', async (req, res) => {
+    const client = new MongoClient(uri)
+    const message = req.body.message
+
+    try {
+        await client.connect()
+        const database = client.db('app-data')
+        const messages = database.collection('messages')
+
+        const insertedMessage = await messages.insertOne(message)
+        res.send(insertedMessage)
+    } finally {
+        await client.close()
+    }
+})
 
 app.listen(PORT, () => console.log('Server running on PORT ' + PORT))

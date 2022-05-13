@@ -37,31 +37,13 @@ const Dashboard = () => {
 
     useEffect(() => {
         getUser()
-        getGenderedUsers()
-    }, [user, genderedUsers])
+    }, [])
 
-
-
-
-    /*const characters = [
-        {
-            name: 'Veselov Oleg',
-            url: 'https://sun9-21.userapi.com/s/v1/ig2/n4qCdDab7kKoSYbPu1vcDNFMiNM6lJN1wL_ZzqYVaIqvwZuxcdDo5BNJwRowloY_5argD3cwH3PqEwg4SnBcWWWM.jpg?size=1080x1080&quality=96&type=album'
-        },
-        {
-            name: 'Monakov Andrew',
-            url: 'https://sun9-7.userapi.com/s/v1/if2/Bpz_0fVXx0o3BfTULXclxyg2E_KO4zNnO6XWB2yG_QJ_XR7wVSjopmq_dudNpZD3InIvuKRxe1qkCNYbwcbLofue.jpg?size=600x691&quality=95&type=album'
-        },
-        {
-            name: 'Sibgatulov Maris',
-            url: 'https://i.ytimg.com/vi/Cs5hJ25S5KQ/maxresdefault.jpg'
-        },
-        {
-            name: 'Ertek Huseyn',
-            url: 'https://sun9-35.userapi.com/s/v1/if2/VDhbze5xJoEvLoHso1PoJUayOzpDvNfl7-q3pdnaUeYB6ImqUNGgVN346Su7uFL2tyMfNsIFsxlNAM8XvXdmF_YS.jpg?size=607x1080&quality=96&type=album'
+    useEffect(() => {
+        if (user) {
+            getGenderedUsers()
         }
-    ]*/
-
+    }, [user])
 
 
     const updateMatches = async (matchedUserId) => {
@@ -106,7 +88,7 @@ const Dashboard = () => {
                         {filteredGenderedUsers?.map((genderedUser) =>
                             <TinderCard
                                 className='swipe'
-                                key={genderedUser.first_name}
+                                key={genderedUser.user_id}
                                 onSwipe={(dir) => swiped(dir, genderedUser.user_id)}
                                 onCardLeftScreen={() => outOfFrame(genderedUser.first_name)}>
                                 <div style={{backgroundImage: 'url(' + genderedUser.url + ')'}}
