@@ -161,11 +161,25 @@ app.get('/gendered-users', async (req, res) => {
         const users = database.collection('users')
         if(gender === 'everyone') {
             const query = {gender_identity: {$eq: ('man' && 'woman')}}
-            const foundUsers = await users.find(query).toArray()
+            /*const N = users.count(query)
+            const R = Math.floor(Math.random() * N)
+            const foundUsers = await users.find(query).limit(6).skip(R).toArray()*/
+            const foundUsers = await users.aggregate([
+                { $match: { gender_identity: ('man' || 'woman')} },
+                { $sample: { size: 1 } }
+            ]).toArray()
+
             res.send(foundUsers)
+            console.log('foundUsers', foundUsers)
         } else {
             const query = {gender_identity: {$eq: gender}}
-            const foundUsers = await users.find(query).toArray()
+            const N = users.count(query)
+            /*const R = Math.floor(Math.random() * N)
+            const foundUsers = await users.find(query).limit(6).skip(R).toArray()*/
+            const foundUsers = await users.aggregate([
+                { $match: { gender_identity: {$eq: gender}} },
+                { $sample: { size: 5 } }
+            ]).toArray()
             res.send(foundUsers)
         }
 

@@ -58,8 +58,6 @@ const Dashboard = () => {
         }
     }
 
-    console.log(user)
-
     const swiped = (direction, swipedUserId) => {
         if (direction === 'right'){
             updateMatches(swipedUserId)
@@ -77,7 +75,11 @@ const Dashboard = () => {
     const filteredGenderedUsers = genderedUsers?.filter(
         genderedUser => !matchedUserIds.includes(genderedUser.user_id)
     )
-
+    /*
+    * Строка 90
+    * Здесь поиграться со способами прохода по отфильтрованному списку, чтобы был рандом
+    * filteredGenderedUsers?.map((genderedUser)
+    * */
     return (
         <>
             {user &&
