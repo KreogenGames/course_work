@@ -29,7 +29,7 @@ const OnBoarding = () => {
         console.log('submitted')
         e.preventDefault()
         try {
-            const response = await axios.put('http://localhost:8000/user', {formData})
+            const response = await axios.put('https://mern-coursework-rksp.herokuapp.com/user', {formData})
             const success = response.status === 200
             if (success) navigate('/dashboard')
         } catch (err) {
@@ -39,7 +39,6 @@ const OnBoarding = () => {
     }
 
     const handleChange = (e) => {
-        console.log('e', e)
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
         const name = e.target.name
 
