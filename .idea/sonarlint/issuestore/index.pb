@@ -13,8 +13,6 @@ H
 client/README.md,3\1\31751a40848e21a3ce2e507e324ffd46e5b7b710
 H
 client/package-lock.json,2\6\26a733df8ec5f9ebc34add7f3b884bb18c2b5048
-C
-client/package.json,a\d\ad8a30996233c30cdd545dbf5f18765b86e6bf64
 D
 client/src/index.css,7\5\751657f4fd5a737220a43ddd2ad7926446725c56
 S

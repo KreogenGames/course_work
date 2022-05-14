@@ -1,0 +1,31 @@
+{
+  "name": "course_work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "nodemon index.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KreogenGames/course_work.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.5.0",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  },
+  "bugs": {
+    "url": "https://github.com/KreogenGames/course_work/issues"
+  },
+  "homepage": "https://github.com/KreogenGames/course_work#readme"
+}
