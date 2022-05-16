@@ -15,7 +15,7 @@ app.use(cors())
 app.use(express.json())
 
 
-if(process.env.NODE_ENV === "production") {
+/*if(process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, '/client/build')))
 
     app.get('*', (req, res) => {
@@ -25,7 +25,7 @@ if(process.env.NODE_ENV === "production") {
     app.get('/api', (req, res) => {
         res.send("Api running")
     })
-}
+}*/
 
 
 app.get('/', (req, res) => {

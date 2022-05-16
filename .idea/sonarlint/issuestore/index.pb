@@ -2,8 +2,6 @@
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 H
-server/package-lock.json,d\0\d015b61d94ec074e22132931840237a6e110b623
-H
 client/public/robots.txt,b\d\bd6eb45ab686cf67dd2d7534b5cf1e4a1e8cc874
 K
 client/public/manifest.json,2\5\253fc91369b428e8530c1e5206f921d081515f15
@@ -13,7 +11,11 @@ H
 client/README.md,3\1\31751a40848e21a3ce2e507e324ffd46e5b7b710
 H
 client/package-lock.json,2\6\26a733df8ec5f9ebc34add7f3b884bb18c2b5048
-D
-client/src/index.css,7\5\751657f4fd5a737220a43ddd2ad7926446725c56
-S
-#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+A
+client/.gitignore,e\3\e32ec5c998c4774d8d1bedd59740d14d940c90ec
+C
+client/package.json,a\d\ad8a30996233c30cdd545dbf5f18765b86e6bf64
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
